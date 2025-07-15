@@ -15,14 +15,14 @@ with sync_playwright() as pw:
     # Initial page
     page.goto("https://visas-fr.tlscontact.com/country/gb/?lang=en-us")
     page.wait_for_load_state("load")
-    print("Centre Selection Page Loaded")
+    print("Centre Selection Page Loaded\nLink: " + page.url)
     page.screenshot(path="screenshots/Centre Selection.png")
 
     # Navigate to preferred centre
     with page.expect_navigation():
         page.get_by_role("button").get_by_text("Continue").nth(centre_index).click()
     page.wait_for_load_state("load")
-    print("Centre Home Page Loaded")
+    print("Centre Home Page Loaded\nLink: " + page.url)
     page.screenshot(path="screenshots/Centre Home.png")
 
     browser.close()
